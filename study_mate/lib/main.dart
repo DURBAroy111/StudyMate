@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:study_mate/attendence/attendencepage.dart';
+import 'package:study_mate/attendence/model.dart';
+import 'package:study_mate/attendence/subject_adapter.dart';
 import 'package:study_mate/todo/todopage.dart';
 
 
 void main() async {
   await Hive.initFlutter();
+  await Hive.initFlutter();
+  Hive.registerAdapter(SubjectModelAdapter());
+  await Hive.openBox<SubjectModel>('subjects');
 
  var box = await Hive.openBox("mytodobox");
   runApp(const MyApp());
@@ -16,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+       title: 'StudyMate',
       debugShowCheckedModeBanner: false,
       home : Dashboard(),
     );
@@ -269,7 +276,7 @@ class TaskManagerPage extends StatelessWidget {
     );
   }
 }
-class AttendencePage extends StatelessWidget {
+/*class AttendencePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -286,7 +293,7 @@ class AttendencePage extends StatelessWidget {
   }
 }
 
-/*class ToDoPage extends StatelessWidget {
+class ToDoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
