@@ -3,6 +3,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:study_mate/attendence/attendencepage.dart';
 import 'package:study_mate/attendence/model.dart';
 import 'package:study_mate/attendence/subject_adapter.dart';
+import 'package:study_mate/study%20session/session.dart';
+import 'package:study_mate/study%20session/study_sessionpage.dart';
 import 'package:study_mate/taskmanager/event.dart';
 import 'package:study_mate/taskmanager/taskmanagerpagw.dart';
 import 'package:study_mate/todo/todopage.dart';
@@ -17,12 +19,12 @@ void main() async {
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(SubjectModelAdapter());
   
-  
   Hive.registerAdapter(EventAdapter());
+  Hive.registerAdapter(SessionAdapter());
   await Hive.openBox<Event>('events');
-
- await Hive.openBox("mytodobox");
- await Hive.openBox<SubjectModel>('subjects');
+  await Hive.openBox<Event>('session');
+  await Hive.openBox("mytodobox");
+  await Hive.openBox<SubjectModel>('subjects');
   runApp(const MyApp());
 }
 
@@ -253,7 +255,7 @@ class NotesPage extends StatelessWidget {
   }
 }
 
-class StudySessionsPage extends StatelessWidget {
+/*class StudySessionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -270,7 +272,7 @@ class StudySessionsPage extends StatelessWidget {
   }
 }
 
-/*class TaskManagerPage extends StatelessWidget {
+class TaskManagerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

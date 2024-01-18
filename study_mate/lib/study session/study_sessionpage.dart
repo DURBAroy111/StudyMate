@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:study_mate/taskmanager/event_editing_page.dart';
-import 'package:study_mate/taskmanager/eventprovider.dart';
-import 'package:study_mate/taskmanager/taskcalendar.dart';
+import 'package:study_mate/study%20session/session__calendarwidget.dart';
+import 'package:study_mate/study%20session/session_editing_page.dart';
+import 'package:study_mate/study%20session/session_provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
@@ -10,23 +10,24 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:hive/hive.dart';
 
 
+
 /*void main() async {
    WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(EventAdapter());
-  await Hive.openBox<Event>('events');
+  await Hive.openBox<Event>('session');
   runApp(const MyApp());
 }*/
 
-class TaskManagerPage extends StatelessWidget {
-  const TaskManagerPage({super.key});
+class StudySessionsPage  extends StatelessWidget {
+  const StudySessionsPage  ({super.key});
   static final String title = "StudyMate";
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context)=> EventProvider(),
+      create: (context)=> SessionProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
@@ -48,7 +49,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Task Manager"),
+        title: Text("Study Sessions"),
         centerTitle: true,
       ),
       body: CalendarWidget(),
