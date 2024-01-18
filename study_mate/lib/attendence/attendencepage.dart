@@ -39,18 +39,24 @@ class SubjectListScreen extends StatelessWidget {
               itemCount: subjects.length,
               itemBuilder: (context, index) {
                 final subject = subjects[index];
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple[200],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: ListTile(
-                    title: Text(subject.name),
-                    subtitle: Text(
-                        'Attended ${subject.attendedClasses} out of ${subject.totalClasses} classes'),
-                    onTap: () {
-                      _controller.incrementAttendedClasses(subject);
-                    },
+                return Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple[200],
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: ListTile(
+                        title: Text(subject.name),
+                        subtitle: Text(
+                            'Attended ${subject.attendedClasses} out of ${subject.totalClasses} classes'),
+                        onTap: () {
+                          _controller.incrementAttendedClasses(subject);
+                        },
+                      ),
+                    ),
                   ),
                 );
               },
