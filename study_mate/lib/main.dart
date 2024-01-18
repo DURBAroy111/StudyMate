@@ -3,16 +3,26 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:study_mate/attendence/attendencepage.dart';
 import 'package:study_mate/attendence/model.dart';
 import 'package:study_mate/attendence/subject_adapter.dart';
+import 'package:study_mate/taskmanager/event.dart';
+import 'package:study_mate/taskmanager/taskmanagerpagw.dart';
 import 'package:study_mate/todo/todopage.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:flutter/src/rendering/box.dart';
 
 
 void main() async {
-  await Hive.initFlutter();
-  await Hive.initFlutter();
+  
+  WidgetsFlutterBinding.ensureInitialized();
+  final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(SubjectModelAdapter());
-  await Hive.openBox<SubjectModel>('subjects');
+  
+  
+  Hive.registerAdapter(EventAdapter());
+  await Hive.openBox<Event>('events');
 
- var box = await Hive.openBox("mytodobox");
+ await Hive.openBox("mytodobox");
+ await Hive.openBox<SubjectModel>('subjects');
   runApp(const MyApp());
 }
 
@@ -260,7 +270,7 @@ class StudySessionsPage extends StatelessWidget {
   }
 }
 
-class TaskManagerPage extends StatelessWidget {
+/*class TaskManagerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -276,7 +286,7 @@ class TaskManagerPage extends StatelessWidget {
     );
   }
 }
-/*class AttendencePage extends StatelessWidget {
+class AttendencePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
