@@ -49,7 +49,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Study Sessions"),
+        title: Text("Study Sessions",
+        style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       body: CalendarWidget(),

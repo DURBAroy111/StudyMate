@@ -82,7 +82,8 @@ class _ToDoPageState extends State<ToDoPage> {
       backgroundColor: Colors.deepPurple[200],
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("ToDo"),
+        title: Text("ToDo",
+        style: TextStyle(color: Colors.white),),
         
       ),
 

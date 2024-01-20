@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:study_mate/attendence/attendencepage.dart';
 import 'package:study_mate/attendence/model.dart';
 import 'package:study_mate/attendence/subject_adapter.dart';
+import 'package:study_mate/notes/note_page.dart';
 import 'package:study_mate/study%20session/session.dart';
 import 'package:study_mate/study%20session/study_sessionpage.dart';
 import 'package:study_mate/taskmanager/event.dart';
@@ -18,13 +19,15 @@ void main() async {
   final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(SubjectModelAdapter());
-  
+  Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(EventAdapter());
   Hive.registerAdapter(SessionAdapter());
   await Hive.openBox<Event>('events');
   await Hive.openBox<Event>('session');
   await Hive.openBox("mytodobox");
   await Hive.openBox<SubjectModel>('subjects');
+   await Hive.openBox<Note>('notes');
+
   runApp(const MyApp());
 }
 
@@ -238,86 +241,3 @@ class Dashboard extends StatelessWidget {
   }
 }
 
-class NotesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Notes"),
-      ),
-      body: Center(
-        child: Text(
-          'This is the detailed page for Notes.',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-/*class StudySessionsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Study Sessions"),
-      ),
-      body: Center(
-        child: Text(
-          'This is the detailed page for Study Sessions.',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-class TaskManagerPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Task Manager"),
-      ),
-      body: Center(
-        child: Text(
-          'This is the detailed page for Task Manager.',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-class AttendencePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Attendence Tracker"),
-      ),
-      body: Center(
-        child: Text(
-          'This is the detailed page for Attendence Tracker.',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-class ToDoPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("ToDo"),
-      ),
-      body: Center(
-        child: Text(
-          'This is the detailed page for ToDo.',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}*/
