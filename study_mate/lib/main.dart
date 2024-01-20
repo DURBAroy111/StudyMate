@@ -57,7 +57,7 @@ class Dashboard extends StatelessWidget {
     "Study Sessions",
     "Task Manager",
     "ToDo",
-    "Attendence ",
+    "Attendance ",
   ];
 
   @override

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:study_mate/attendence/model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 
 class SubjectController {
@@ -12,17 +13,34 @@ class SubjectController {
       ..name = name
       ..totalClasses = totalClasses
       ..attendedClasses = 0;
-      //..deleteFunction= false;
     _box.add(subject);
+    notifyListeners();
+  }
+
+  void editSubject(
+      SubjectModel subject, String editedName, int editedTotalClasses) {
+    subject
+      ..name = editedName
+      ..totalClasses = editedTotalClasses;
+    subject.save();
+    notifyListeners();
   }
 
   void incrementAttendedClasses(SubjectModel subject) {
     if (subject.attendedClasses < subject.totalClasses) {
       subject.attendedClasses++;
       subject.save();
+      notifyListeners();
     }
   }
-   void deleteSubject(SubjectModel subject) {
+
+  void deleteSubject(SubjectModel subject) {
     subject.delete();
-     
-}}
+    notifyListeners();
+  }
+
+  void notifyListeners() {
+    // Notify listeners to trigger a rebuild
+    _box.listenable().addListener(() {});
+  }
+}
