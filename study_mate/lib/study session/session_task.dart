@@ -27,8 +27,8 @@ class _TasksWidgetState extends State<TasksWidget> {
    if(selectedEvents.isEmpty){
     return Center(
       child: Text(
-        'No Events Found',
-        style: TextStyle(color: Colors.black, fontSize: 24),
+        'No Study Session Found',
+      style: TextStyle(color: Colors.white, fontSize: 24),
       ),
     );
    }

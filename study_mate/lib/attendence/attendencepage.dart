@@ -33,7 +33,8 @@ class SubjectListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepPurple[300],
       appBar: AppBar(
-        title: Text('Attendance Tracker'),
+        title: Text('Attendance Tracker',
+        style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.deepPurple,
       ),
       body: ValueListenableBuilder(
@@ -61,18 +62,21 @@ class SubjectListScreen extends StatelessWidget {
                     onLongPress: () async {
                       await _showEditSubjectDialog(context, subject);
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple[200],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: ListTile(
-                        title: Text(subject.name),
-                        subtitle: Text(
-                            'Attended ${subject.attendedClasses} out of ${subject.totalClasses} classes'),
-                        onTap: () {
-                          _controller.incrementAttendedClasses(subject);
-                        },
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple[200],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ListTile(
+                          title: Text(subject.name),
+                          subtitle: Text(
+                              'Attended ${subject.attendedClasses} out of ${subject.totalClasses} classes'),
+                          onTap: () {
+                            _controller.incrementAttendedClasses(subject);
+                          },
+                        ),
                       ),
                     ),
                   ),

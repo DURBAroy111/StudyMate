@@ -10,16 +10,6 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:hive/hive.dart';
 
 
-
-/*void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
-  final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDirectory.path);
-  Hive.registerAdapter(EventAdapter());
-  await Hive.openBox<Event>('session');
-  runApp(const MyApp());
-}*/
-
 class StudySessionsPage  extends StatelessWidget {
   const StudySessionsPage  ({super.key});
   static final String title = "StudyMate";
