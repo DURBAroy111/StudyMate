@@ -6,7 +6,6 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:provider/provider.dart';
 
 class CalendarWidget extends StatelessWidget {
- // const CalendarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

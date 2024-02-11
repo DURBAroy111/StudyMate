@@ -21,7 +21,7 @@ class _ToDoPageState extends State<ToDoPage> {
 
   @override
   void initState() {
-    // check if ot'is first time opening box
+    // check if it is first time opening box
 
     if(_myBox.get("TODOLIST")== null){
       db.createInitialData();

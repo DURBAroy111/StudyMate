@@ -4,7 +4,7 @@ class ToDoDatabase {
   List todoList = [];
 
     final _mybox = Hive.box("mytodobox");
-    // Do something with the box
+  
 
     // run for first time ever
     void createInitialData() {

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:study_mate/attendence/model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -40,7 +41,6 @@ class SubjectController {
   }
 
   void notifyListeners() {
-    // Notify listeners to trigger a rebuild
     _box.listenable().addListener(() {});
   }
 }

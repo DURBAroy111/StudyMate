@@ -27,8 +27,7 @@ class Event1 extends HiveObject {
 }
 class SessionAdapter extends TypeAdapter<Event1> {
   @override
-  final int typeId = 2; // Make sure to set a unique typeId for your class
-
+  final int typeId = 2;
   @override
   Event1 read(BinaryReader reader) {
     return Event1(

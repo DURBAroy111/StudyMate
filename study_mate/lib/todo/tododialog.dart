@@ -47,8 +47,6 @@ class tododialog extends StatelessWidget {
             )
           ],
         ),
-
-        //save and cancel button
        
 
          ),

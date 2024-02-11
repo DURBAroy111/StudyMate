@@ -11,8 +11,6 @@ class SubjectModel extends HiveObject {
   @HiveField(2)
   late int attendedClasses;
 
-  // @HiveField(3)
-  //late bool deleteFunction;
   @HiveField(3)
   late bool deleteFunction;
 }

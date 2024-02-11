@@ -18,15 +18,17 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
+
   Hive.registerAdapter(SubjectModelAdapter());
   Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(EventAdapter());
   Hive.registerAdapter(SessionAdapter());
+
   await Hive.openBox<Event>('events');
   await Hive.openBox<Event>('session');
   await Hive.openBox("mytodobox");
   await Hive.openBox<SubjectModel>('subjects');
-   await Hive.openBox<Note>('notes');
+  await Hive.openBox<Note>('notes');
 
   runApp(const MyApp());
 }
@@ -125,6 +127,7 @@ class Dashboard extends StatelessWidget {
               width: width,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  
                   crossAxisCount: 2,
                   childAspectRatio: 1.1,
                   mainAxisSpacing: 25,
@@ -196,7 +199,7 @@ class Dashboard extends StatelessWidget {
                     );
                   } 
                   else {
-                    return Container(); // You can return a default widget for other indices
+                    return Container(); 
                   }
                 },
               ),
@@ -215,7 +218,7 @@ class Dashboard extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black26,
+            color: Colors.black26, 
             spreadRadius: 1,
             blurRadius: 6,
           ),

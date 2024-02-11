@@ -33,7 +33,7 @@ class Event extends HiveObject {
 }
 class EventAdapter extends TypeAdapter<Event> {
   @override
-  final int typeId = 1; // Make sure to set a unique typeId for your class
+  final int typeId = 1; 
 
   @override
   Event read(BinaryReader reader) {
